@@ -1,0 +1,58 @@
+Users
+    type: buyer/seller
+    userID: Number,
+    name
+    password: String10,
+    email,
+    number
+
+Items
+    productID: Number,
+    name,
+    category,
+    desc,
+    quantity,
+    unit price,
+    sellerID: seller's userID
+
+Transactions
+    date,
+    items[] (max 5),
+    buyer,
+    seller,
+    total amount
+
+1. Register as User
+2. User Menu
+    Login ->    
+    1. Sell Menu
+        Add new item
+            Max 20 items
+        Edit Stock
+            Change Quantity
+            Change Price 
+            Change Item Name
+            Change Category
+            Change Desc
+        Show Products
+        Show Low Stock Products
+
+    2. Buy Menu
+        View all Products
+            Order by sellerID
+        Show Product by Seller
+        Search Products by Category
+        Search Products by Name
+        Add to Cart
+        Edit Cart
+        Checkout Cart
+            All
+            By Seller
+            Specific Item
+
+    3. Admin
+        Show All Users
+        Show All Sellers
+        Show Total Sales in Given Duration
+        Show Sellers Sales
+        Show Sellers Sales
