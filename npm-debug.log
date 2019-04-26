@@ -1,0 +1,41 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'i', 'nodemon', '-g' ]
+2 info using npm@3.5.2
+3 info using node@v8.10.0
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readGlobalPackageData
+7 silly fetchPackageMetaData nodemon
+8 silly fetchNamedPackageData nodemon
+9 silly mapToRegistry name nodemon
+10 silly mapToRegistry using default registry
+11 silly mapToRegistry registry https://registry.npmjs.org/
+12 silly mapToRegistry uri https://registry.npmjs.org/nodemon
+13 verbose request uri https://registry.npmjs.org/nodemon
+14 verbose request no auth needed
+15 info attempt registry request try #1 at 6:56:24 PM
+16 verbose request id 5bb2595637757d25
+17 verbose etag W/"ad6416f0a95a178cf98b23739f2b5c2f"
+18 verbose lastModified Mon, 08 Apr 2019 21:05:06 GMT
+19 http request GET https://registry.npmjs.org/nodemon
+20 info retry will retry, error on last attempt: Error: read ECONNRESET
+21 info attempt registry request try #2 at 6:58:18 PM
+22 verbose etag W/"ad6416f0a95a178cf98b23739f2b5c2f"
+23 verbose lastModified Mon, 08 Apr 2019 21:05:06 GMT
+24 http request GET https://registry.npmjs.org/nodemon
+25 info retry will retry, error on last attempt: Error: read ECONNRESET
+26 verbose stack Error: write EIO
+26 verbose stack     at _errnoException (util.js:1022:11)
+26 verbose stack     at WriteWrap.afterWrite [as oncomplete] (net.js:880:14)
+27 verbose cwd /home/matthew/Documents/NodeJS/shopping-node
+28 error Linux 4.15.0-47-generic
+29 error argv "/usr/bin/node" "/usr/bin/npm" "i" "nodemon" "-g"
+30 error node v8.10.0
+31 error npm  v3.5.2
+32 error code EIO
+33 error errno EIO
+34 error syscall write
+35 error write EIO
+36 error If you need help, you may report this error at:
+36 error     <https://github.com/npm/npm/issues>
+37 verbose exit [ 1, true ]

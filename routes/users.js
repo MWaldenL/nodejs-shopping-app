@@ -12,6 +12,13 @@ router.get('/', async (req, res) => {
 })
 
 
+// Get own 'profile'
+router.get('/me', auth, async (req, res) => {
+    const user = await User.findById(req.user._id).select('-password');
+    res.send(user);
+})
+
+
 // Get user by ID
 router.get('/:id', async (req, res) => {
     const user = await User.findById(req.params.id);
@@ -22,14 +29,6 @@ router.get('/:id', async (req, res) => {
 
     res.send(user);
 })
-
-
-// Get own 'profile'
-router.get('/me', auth, async (req, res) => {
-    const user = await User.findById(req.user.id).select('-password');
-    res.send(user);
-})
-
 
 // Register new user
 router.post('/', async (req, res) => {
@@ -50,7 +49,7 @@ router.post('/', async (req, res) => {
         email: req.body.email,
         password: req.body.password,
         productList: [],
-        // transactionList: [],
+        transactionList: [],
         cart: [],
         number: req.body.number,
         isSeller: req.body.isSeller,
