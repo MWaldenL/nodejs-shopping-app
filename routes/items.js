@@ -8,8 +8,8 @@ const seller = require('../middleware/seller');
 const router = express.Router();
 
 
-// Buyer: Show all products 
-router.get('/', auth, async (req, res) => {
+// Show all products 
+router.get('/', async (req, res) => {
     const items = await Item.find().sort('name');
     res.send(items);
 })
@@ -40,6 +40,16 @@ router.get('/seller/:id', auth, async (req, res) => {
     res.send(item);
 })
 
+
+// Seller: Get Low Stock Products
+router.get('/lowstock', auth, seller, async (req, res) => {
+    const products = await Item.find({ 'quantity': { '$lt': 5 } })
+    if (!products) {
+        res.send('You have no low stock products!');
+        return;
+    }
+    res.send(products);
+})
 
 // Seller: Add new product
 router.post('/', auth, seller, async (req, res) => {
@@ -103,21 +113,6 @@ router.delete('/:id', auth, seller, async(req, res) => {
 
     res.send(`${item.name} successfully deleted.`);
 })
-
-// router.use(function(req, res, next) {
-//     const token = req.cookies.auth;
-
-//     if (!token)
-//         return res.status(401).send('Access denied. No token provided.');
-
-//     try {
-//         const decoded = jwt.verify(token, config.get('jwtPrivateKey'));    
-//         req.user = decoded;
-//         next();
-//     } catch (ex) {
-//         res.status(400).send('Invalid token.');
-//     }
-// });
 
 
 module.exports = router;

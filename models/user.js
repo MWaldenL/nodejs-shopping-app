@@ -11,14 +11,14 @@ const userProductSchema = new mongoose.Schema({
     name: {
         type: String,
         minlength: 10,
-        maxlength: 50,
+        maxlength: 255,
         required: true,
     },
     category: categorySchema,
     description: {
         type: String,
         minlength: 5,
-        maxlength: 50,
+        maxlength: 255,
     },
     quantity: {
         type: Number,
@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema({
     name: {
         type: String,
         minlength: 5,
-        maxlength: 50,
+        maxlength: 255,
         required: true,
     },
     email: {

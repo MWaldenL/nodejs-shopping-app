@@ -6,7 +6,7 @@ const itemSchema = new mongoose.Schema({
     name: {
         type: String,
         minlength: 10,
-        maxlength: 50,
+        maxlength: 255,
         required: true,
     },
     category: new mongoose.Schema({

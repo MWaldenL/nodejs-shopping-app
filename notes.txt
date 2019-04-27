@@ -22,20 +22,20 @@ Transactions
     seller,
     total amount
 
-1. Register as User          *
+1. Register User          *
 2. User Menu        
     Login ->                 *
-    1. Sell Menu 
-        Add new item         *
+    1. Sell Menu (Dashboard) *
+        Add New Item         *
             Max 20 items     *
-        Edit Stock
+        Edit Stock           *
             Change Quantity  *
             Change Price     *
             Change Item Name *
             Change Category  *
             Change Desc      *
         Show Products        *
-        Show Low Stock Prod  
+        Show Low Stock Prod  *
 
     2. Buy Menu
         View all Products               *
@@ -44,13 +44,11 @@ Transactions
         Search Products by Name         *
         Add to Cart                     * 
         Edit Cart                       *
-        Checkout Cart
+        Remove from Cart                *
+        Checkout Cart                   
             All
             By Seller
             Specific Item
-
-        * For every transaction:
-            Make necessary state changes (quantity, etc)
  
     3. Admin
         Show All Users                      *

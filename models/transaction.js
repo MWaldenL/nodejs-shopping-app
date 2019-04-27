@@ -9,14 +9,22 @@ const customUserSchema = new mongoose.Schema({
         maxlength: 50,
         required: true,
     },
-    email: {
+    number: {
         type: String,
-        trim: true,
-        match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 
-            'Please fill a valid email address'],
-        required: 'Email address is required.'
-    },
-});
+        minlength: 7,
+        maxlength: 11, 
+        required: true
+    }
+})
+
+const customItemSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        minlength: 10,
+        maxlength: 255,
+        required: true,
+    }
+})
 
 const transactionSchema = new mongoose.Schema({
     date: {
@@ -25,15 +33,11 @@ const transactionSchema = new mongoose.Schema({
         required: true,
     },
     items: {
-        type: [ itemSchema ],
+        type: [ customItemSchema ],
         validate: [ v => v.length <= 5, 'Only up to 5 items allowed!' ]
     },
-    buyer: {
-        type: customUserSchema
-    },
-    seller: {
-        type: customUserSchema
-    },
+    buyer: customUserSchema,
+    seller: customUserSchema,
     totalAmount: {
         type: Number,
         default: 0.00,
@@ -43,16 +47,16 @@ const transactionSchema = new mongoose.Schema({
 
 const Transaction = mongoose.model('Transaction', transactionSchema);
 
-function validateTransaction(t) {
-    const schema = {
-        name: Joi.string().min(10).max(50).required(),
-        password: Joi.string().min(8).max(30).required(),
-        number: Joi.string().min(7).max(11).required(),
-    }
+// function validateTransaction(t) {
+//     const schema = {
+//         name: Joi.string().min(10).max(50).required(),
+//         password: Joi.string().min(8).max(30).required(),
+//         number: Joi.string().min(7).max(11).required(),
+//     }
 
-    return Joi.validate(user, schema)
-}
+//     return Joi.validate(user, schema)
+// }
 
 exports.Transaction = Transaction;
 exports.transactionSchema = transactionSchema;
-exports.validate = validateTransaction;
+// exports.validate = validateTransaction;
