@@ -25,6 +25,10 @@ body {
     color: #000
 }
 
+.nav-links {
+    cursor: pointer;
+}
+
 .main-nav li {
     text-align: center;
     margin: 15px auto;
@@ -54,7 +58,7 @@ body {
     .navbar {
         display: flex;
         justify-content: space-between;
-        padding: 4vw;
+        padding: 2em;
         height: 70px;
         align-items: center;
     }

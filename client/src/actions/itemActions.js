@@ -6,7 +6,7 @@ import { returnErrors } from './errorActions';
 export const getItems = () => dispatch => {
   dispatch(setItemsLoading());
   axios
-    .get('/api/items')
+    .get('/api/products')
     .then(res =>
       dispatch({
         type: GET_ITEMS,

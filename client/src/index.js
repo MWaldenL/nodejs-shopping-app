@@ -6,6 +6,8 @@ import store from './store';
 import App from './App';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
+import Logout from './components/auth/Login';
+import Cart from './components/Cart';
 import './index.css';
 
 const routing = (
@@ -13,7 +15,9 @@ const routing = (
     <Router>
         <Route exact path="/" component={App} />
         <Route path="/register" component={Register} />
-        <Route path="/login" component={Login} />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/logout" component={Logout} />
+        <Route path="/cart" component={Cart} />
     </Router>
   </Provider>
 )

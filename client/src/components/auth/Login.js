@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter, Redirect } from 'react-router-dom'
 import { login } from '../../actions/authActions'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -6,55 +7,47 @@ import '../../css/register.css'
 
 
 class Login extends Component {
+
   state = {
     email: '',
     password: '',
     msg: null
   }
 
-
   static propTypes = {
     isAuthenticated: PropTypes.bool,
     error: PropTypes.object.isRequired,
-    register: PropTypes.func.isRequired,
   };
 
   componentDidUpdate(prevProps) {
     const { error, isAuthenticated } = this.props;
     if (error !== prevProps.error) {
-      // Check for register error
+      // Check for login error
       if (error.id === 'LOGIN_FAIL') {
         this.setState({ msg: error.msg.msg });
       } else {
         this.setState({ msg: null });
       }
     }
-
-    // If authenticated, for now, show a success message
-    if (isAuthenticated) {
-      alert("Successfully logged in!");
-    }
   }
 
   onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-  };
+    this.setState({ [e.target.name]: e.target.value })
+  }
 
   onSubmit = e => {
-    e.preventDefault();
-
-    const { email, password } = this.state;
-
-    const user = {
-      email,
-      password
-    };
-
-    // Attempt to login
-    this.props.login(user);
-  };
+    e.preventDefault()
+    const { email, password } = this.state
+    const user = { email, password }
+    this.props.login(user)
+  }
 
   render() {
+    const Button = withRouter(({ history }) => (
+      <input type="submit" className="btn" value="Login" 
+        onClick={ () => history.push('/') } />
+    ))
+
     return (
       <div className="container">
         <header>
@@ -63,13 +56,17 @@ class Login extends Component {
         <div className="card">
             <h1>Login</h1>
             <form className="form-group" onSubmit={ this.onSubmit }> 
-              <label for="name">Email</label>
-              <input type='email' name='name' id='item' placeholder='Email' />
+              <label htmlFor="email">Email</label>
+              <input type="text" name="email" id="email" placeholder="Email" 
+                onChange={ this.onChange }/>
 
-              <label for="name">Password</label>
-              <input type='password' name='name' id='item' placeholder='Password' />
+              <label htmlFor="password">Password</label>
+              <input type="password" name="password" id="password" placeholder="Password" 
+                onChange={ this.onChange }/>
               
-              <input type="submit" className="btn" value="Login"/>
+              {/* <Button /> */}
+              <input type="submit" className="btn" value="Login" />
+                {/* onClick={ () => history.push('/') } /> */}
             </form>
         </div>
       </div>
