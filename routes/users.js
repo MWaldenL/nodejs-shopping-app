@@ -38,7 +38,7 @@ router.post('/', async (req, res) => {
         transactionList: [],
         cart: [],
         number: req.body.number,
-        isSeller: req.body.isSeller,
+        isSeller: false,
         isAdmin: false
     });
 
