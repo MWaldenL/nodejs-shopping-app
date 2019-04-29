@@ -1,30 +1,52 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { addToCart } from '../actions/cartActions'
 import '../css/itemcard.css';
 
 
-export default class ItemCard extends Component {
+class ItemCard extends Component {
+  addToCart = () => {
+    const item = {
+      itemId: this.props.id
+    }
+    console.log(item);
+    this.props.addToCart(item);
+  }
+
   render() {
+    const { isAuth } = this.props.auth
+    const cartIcon = (
+      <i className="fas fa-shopping-cart" onClick={ this.addToCart }></i>
+    )
+
+    const itemUrl = `/${this.props.id}` 
+      
     return (
       <div className="itemCard">
-        <img src={ require(`../assets/${this.props.imgUrl}`) } className="item-image" />
+        {/* // onClick={ () => { 
+        //   this.props.history.push({
+        //     pathname: itemUrl,
+        //     state: {
+        //       id: this.props.id
+        //     }
+        //   }) 
+        // } }> */}
+
+        <img src={ require(`../assets/${ this.props.imgUrl }`) } alt="anime" className="item-image" />
         <div className="bottomCard">
           <h4 className="ellipsis">{ this.props.name }</h4>
-          <h3>{ this.props.price }</h3>
-          <button className="btn">Add to Cart</button>
+          <p>{ this.props.price }</p>
+          { isAuth ? cartIcon : null }
         </div>
       </div>
     )
   }
 }
 
-// const mapStateToProps = state => ({
-//   cart: state.cart
-// })
+const mapStateToProps = state => ({
+  auth: state.auth
+})
 
-const mergeProps = (stateProps, dispatchProps, ownProps) => {
-  return Object.assign({}, ownProps, stateProps, dispatchProps);
-}
-
-// export default connect(null, { addToCart })(ItemCard);
+// export default withRouter(connect(mapStateToProps, { addToCart }))(ItemCard);
+export default connect(mapStateToProps, { addToCart })(ItemCard);

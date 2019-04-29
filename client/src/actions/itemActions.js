@@ -1,13 +1,12 @@
 import axios from 'axios';
-import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, ITEMS_LOADING } from './types';
+import { GET_ITEMS, ADD_ITEM, DELETE_ITEM, ITEMS_LOADING, GET_ITEM_BY_ID } from './types';
 import { tokenConfig } from './authActions';
 import { returnErrors } from './errorActions';
 
 
 export const getItems = () => dispatch => {
   dispatch(setItemsLoading());
-  axios
-    .get('/api/products')
+  axios.get('/api/products')
     .then(res =>
       dispatch({
         type: GET_ITEMS,
@@ -17,6 +16,20 @@ export const getItems = () => dispatch => {
     .catch(err =>
       dispatch(returnErrors(err.response.data, err.response.status))
     );
+};
+
+export const getItemById = id => dispatch => {
+  axios.get(`/api/products/${id}`)
+    .then(res => 
+        dispatch({
+          type: GET_ITEM_BY_ID,
+          payload: res.data
+        }))
+    .catch(err => {
+      console.log(id)
+      dispatch(returnErrors(err.response.data, err.response.status))
+    }
+    )
 };
 
 export const addItem = item => (dispatch, getState) => {

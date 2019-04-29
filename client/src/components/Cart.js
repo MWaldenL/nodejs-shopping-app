@@ -1,6 +1,8 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getCart } from '../actions/cartActions'
+import { getCart, removeFromCart } from '../actions/cartActions'
+import CartItemCard from './CartItemCard'
+import '../css/itemcard.css'
 
 
 class Cart extends Component {
@@ -10,21 +12,15 @@ class Cart extends Component {
 
   render() {
     const cart = this.props.cart.items;
-    console.log(this.props.cart.items[0]);
       
-    const itemList = (cart.map(
-      ({ id, name, imgUrl }) => (
-        <Fragment key={id}>
-          <div className="itemCard">
-            <img src={ require(`../assets/${ imgUrl }`) } className="item-image" />
-            <h4 className="ellipsis">{ name }</h4>
-          </div>
-        </Fragment>
-      )
-    ))
+    const itemList = ( 
+      cart.map( ({ id, name, imgUrl }) => (
+        <CartItemCard key={id} id={id} name={name} imgUrl={imgUrl} /> 
+      ))
+    )
 
     return ( 
-      <div> 
+      <div className="main-container"> 
         { itemList }
       </div>
     );
@@ -35,4 +31,4 @@ const mapStateToProps = state => ({
   cart: state.cart
 })
 
-export default connect(mapStateToProps, { getCart })(Cart);
+export default connect(mapStateToProps, { getCart, removeFromCart })(Cart);

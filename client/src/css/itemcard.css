@@ -1,17 +1,25 @@
+i {
+    cursor: pointer;
+}
+
 .item-image {
     object-fit: cover; 
-    max-height: 100%;
+    max-height: 75%;
 }
 
 .itemCard {
     background-color: #fafafa;
     border: 1px solid #eeeeee;
     border-radius: 5px;
+    cursor: pointer;
     width: 300px;
     display: flex;
     flex-direction: column;
-    overflow-y: hidden;
     justify-self: center
+}
+
+.itemCard :hover {
+    background: white
 }
 
 .bottomCard {
@@ -22,14 +30,19 @@
 }
 
 .bottomCard > * {
-    margin: 10px 0 5px 0;
+    margin: 5px 0 5px 0;
+}
+
+.bottomCard > p {
+    margin: 5px 0 10px 0;
 }
 
 .btn{
     background: #0069ed;
+    display: inline;
     font-size: 12pt;
     color: #ffffff;
-    margin: 1em;
+    /* margin: 2em; */
     padding: 0.5rem 2rem;
     align-items: center;
     text-decoration: none;

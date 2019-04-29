@@ -7,6 +7,7 @@ import App from './App';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Cart from './components/Cart';
+import ItemDetail from './components/ItemDetail';
 import './index.css';
 
 const routing = (
@@ -16,6 +17,7 @@ const routing = (
         <Route path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
         <Route path="/cart" component={Cart} />
+        {/* <Route path="/:id" component={ItemDetail} /> */}
     </Router>
   </Provider>
 )

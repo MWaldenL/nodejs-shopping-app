@@ -12,22 +12,20 @@ class MainPage extends Component {
 
   render() {
     const { items } = this.props.item;
-    console.log(this.props.item);
 
     const itemList = (
       items.map( ({ _id, name, unitPrice, imgUrl }) => (
-          <ItemCard key={_id} name={ name } price={ unitPrice } imgUrl={ imgUrl } />
+          <ItemCard key={_id} id={_id} name={ name } price={ unitPrice } imgUrl={ imgUrl } />
       ))
     )
 
     return (
       <div className="main-container"> 
-        { this.props.isAuth ? itemList : null }
+        { itemList }
       </div>
     )
   }
 }
-
 
 const mapStateToProps = state => ({
   item: state.item,

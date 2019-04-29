@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import { withRouter, Redirect } from 'react-router-dom'
 import { login } from '../../actions/authActions'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -20,7 +19,7 @@ class Login extends Component {
   };
 
   componentDidUpdate(prevProps) {
-    const { error, isAuthenticated } = this.props;
+    const { error } = this.props;
     if (error !== prevProps.error) {
       // Check for login error
       if (error.id === 'LOGIN_FAIL') {
@@ -29,6 +28,8 @@ class Login extends Component {
         this.setState({ msg: null });
       }
     }
+
+
   }
 
   onChange = e => {
@@ -37,8 +38,10 @@ class Login extends Component {
 
   onSubmit = e => {
     e.preventDefault()
+
     const { email, password } = this.state
     const user = { email, password }
+
     this.props.login(user)
   }
 
@@ -65,7 +68,7 @@ class Login extends Component {
                 onChange={ this.onChange }/>
               
               {/* <Button /> */}
-              <input type="submit" className="btn" value="Login"  />
+              <input type="submit" className="btn" value="Login" href="/" onClick={ this.redirect } />
             </form>
         </div>
       </div>

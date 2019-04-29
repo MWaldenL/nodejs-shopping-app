@@ -27,8 +27,10 @@ router.post('/', auth, async (req, res) => {
     if (!user)
         return res.status(404).send('User not found.')
 
-    if (!item)
+    if (!item) {
+        console.log(req.body);
         return res.status(404).send('Item not found.')
+    }
 
     if (user.cart.length + 1 > 5) 
         return res.status(400).send('Cart has too many items.')

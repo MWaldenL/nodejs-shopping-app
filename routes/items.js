@@ -14,8 +14,18 @@ router.get('/', async (req, res) => {
     res.send(items);
 })
 
+router.get('/:id', async (req, res) => {
+    const item = await Item.findById(req.body.id)
+
+    if (!item) {
+        return res.status(404).send('Item not found.')
+    }
+
+    res.json(item);
+})
+
 // Buyer: Show products by category
-router.get('/category/:id', auth, async (req, res) => {
+router.get('/category/:id', async (req, res) => {
     const item = await Item
         .find({ 'category._id': req.params.id })
         .sort('name');
@@ -58,7 +68,7 @@ router.post('/', auth, seller, async (req, res) => {
         return res.status(400).send('Invalid request.');
 
     // Check if seller product list exceeds 20 items
-    let _seller = await User.findById(req.user._id);
+    let _seller = await User.findById(req.user.id);
     if (_seller.productList.length === 20) {
         return res.status(400).send('Max number of items reached')
     }
