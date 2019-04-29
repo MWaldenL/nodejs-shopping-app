@@ -1,17 +1,40 @@
 .item-image {
-    object-fit: contain;
-    max-height: 50%;
+    object-fit: cover; 
+    max-height: 100%;
 }
 
-.itemcard {
-    background-color: #dedede;
-    padding: 2em 0.5em 2em 0.5em;
-    width: 10vw;
-    min-height: 10vh;
+.itemCard {
+    background-color: #fafafa;
+    border: 1px solid #eeeeee;
+    border-radius: 5px;
+    width: 300px;
     display: flex;
     flex-direction: column;
     overflow-y: hidden;
     justify-self: center
+}
+
+.bottomCard {
+    display: flex;
+    flex-direction: column;
+    justify-self: center;
+    padding: 1em;
+}
+
+.bottomCard > * {
+    margin: 10px 0 5px 0;
+}
+
+.btn{
+    background: #0069ed;
+    font-size: 12pt;
+    color: #ffffff;
+    margin: 1em;
+    padding: 0.5rem 2rem;
+    align-items: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
 }
 
 .ellipsis {

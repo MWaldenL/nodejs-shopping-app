@@ -12,7 +12,7 @@ class MainPage extends Component {
 
   render() {
     const { items } = this.props.item;
-    console.log(this.props.auth);
+    console.log(this.props.item);
 
     const itemList = (
       items.map( ({ _id, name, unitPrice, imgUrl }) => (

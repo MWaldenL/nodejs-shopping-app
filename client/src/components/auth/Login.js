@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { withRouter, Redirect } from 'react-router-dom'
+// import { withRouter, Redirect } from 'react-router-dom'
 import { login } from '../../actions/authActions'
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -43,10 +43,10 @@ class Login extends Component {
   }
 
   render() {
-    const Button = withRouter(({ history }) => (
-      <input type="submit" className="btn" value="Login" 
-        onClick={ () => history.push('/') } />
-    ))
+    // const Button = withRouter(({ history }) => (
+    //   <input type="submit" className="btn" value="Login" 
+    //     onClick={ () => history.push('/') } />
+    // ))
 
     return (
       <div className="container">
@@ -65,8 +65,7 @@ class Login extends Component {
                 onChange={ this.onChange }/>
               
               {/* <Button /> */}
-              <input type="submit" className="btn" value="Login" />
-                {/* onClick={ () => history.push('/') } /> */}
+              <input type="submit" className="btn" value="Login"  />
             </form>
         </div>
       </div>

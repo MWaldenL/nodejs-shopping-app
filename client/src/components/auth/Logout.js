@@ -8,7 +8,7 @@ class Logout extends Component {
     return (
         <Fragment>
             <li className="nav-links">
-              <a href="#" onClick={ this.props.logout }>
+              <a href="/" onClick={ this.props.logout }>
                   Logout
               </a>
             </li>

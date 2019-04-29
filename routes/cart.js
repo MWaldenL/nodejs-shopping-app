@@ -6,14 +6,22 @@ const auth = require('../middleware/auth');
 const router = express.Router();
 
 
+router.get('/', auth, async (req, res) => {
+    const user = await User.findById(req.user.id);
+    if (!user)
+        return res.status(404).send('User not found.');
+
+    res.send(user.cart);
+})
+
 // Add item to cart 
 router.post('/', auth, async (req, res) => {
-    // Get item, user, and quantity
     const item = await Item
         .findById(req.body.itemId)
-        .select({'name': 1, 'description': 1, 'quantity': 1, 'seller': 1});
+        .select({'name': 1, 'imgUrl': 1});
 
-    const user = await User.findById(req.user._id);
+    const user = await User.findById(req.user.id);
+    // const quantity = parseInt(req.body.quantity);
 
     // Validation
     if (!user)
@@ -26,18 +34,20 @@ router.post('/', auth, async (req, res) => {
         return res.status(400).send('Cart has too many items.')
 
     // Add item to cart
-    user.cart.push(item);
+    // for (let i = 0; i < quantity; i++) {
+        user.cart.push(item);
+    // }
 
     await user.save();
 
-    res.send(`${item.name} added to cart!`);
+    res.json(item);
 })
 
 
 // TODO: Checkout single item - Issue
 router.post('/checkout', auth, async (req, res) => {
     // Get item by id
-    const user = await User.findById(req.user._id);
+    const user = await User.findById(req.user.id);
     const item = user.cart.find(item => item.id === req.body.itemId);
 
     console.log(user);
@@ -70,7 +80,7 @@ router.post('/checkout', auth, async (req, res) => {
 
 // Delete from cart
 router.delete('/', auth, async (req, res) => {
-    const user = await User.findById(req.user._id);
+    const user = await User.findById(req.user.id);
     const targetItem = user.cart.find(item => item.id === req.body.itemId);
 
     if (!targetItem)

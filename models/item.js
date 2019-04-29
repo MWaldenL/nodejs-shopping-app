@@ -31,6 +31,9 @@ const itemSchema = new mongoose.Schema({
         required: true,
         default: 0.00
     },
+    imgUrl: { 
+        type: String
+    },
     seller: {
         type: new mongoose.Schema({
             name: {

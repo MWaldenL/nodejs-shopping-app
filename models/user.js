@@ -32,6 +32,23 @@ const userProductSchema = new mongoose.Schema({
     },
 });
 
+const customItemSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        minlength: 5,
+        maxlength: 255,
+        required: true,
+    },
+    imgUrl: { 
+        type: String
+    },
+    quantity: {
+        type: Number,
+        required: true,
+        default: 0
+    },
+})
+
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -68,7 +85,7 @@ const userSchema = new mongoose.Schema({
         validate: [ v => v.length <= 50 ]
     },
     cart: {
-        type: [ itemSchema ],
+        type: [ customItemSchema ],
         validate: [ v => v.length <= 5 ] // TODO: Check
     },
     isSeller: {

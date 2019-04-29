@@ -1,6 +1,5 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
-import { logout } from '../actions/authActions';
 import Logout from "./auth/Logout";
 
 class AppNavbar extends Component {

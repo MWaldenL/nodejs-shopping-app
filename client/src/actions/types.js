@@ -1,5 +1,7 @@
 export const GET_ITEMS = 'GET_ITEMS';
+export const GET_CART = 'GET_CART';
 export const ADD_ITEM = 'ADD_ITEM';
+export const ADD_TO_CART = 'ADD_TO_CART';
 export const DELETE_ITEM = 'DELETE_ITEM';
 export const ITEMS_LOADING = 'ITEMS_LOADING';
 export const USER_LOADING = "USER_LOADING";
