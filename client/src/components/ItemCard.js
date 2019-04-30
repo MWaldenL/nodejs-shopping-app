@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 import { addToCart } from '../actions/cartActions'
 import '../css/itemcard.css';
@@ -14,11 +14,7 @@ class ItemCard extends Component {
     this.props.addToCart(item);
   }
 
-  componentDidMount() {
-    console.log(this.props.history);
-  }
-
-  onDivClick = () => {
+  onCardClick = () => {
     const itemUrl = `/details/${this.props.id}` 
     this.props.history.push({
       pathname: itemUrl,
@@ -35,10 +31,10 @@ class ItemCard extends Component {
     )
       
     return (
-      <div className="itemCard" onClick={this.onDivClick}>
+      <div className="itemCard" onClick={ this.onCardClick }>
         <img src={ require(`../assets/${ this.props.imgUrl }`) } alt="anime" className="item-image" />
         <div className="bottomCard">
-          <h4 className="ellipsis">{ this.props.name }</h4>
+          <h3 className="ellipsis">{ this.props.name }</h3>
           <p>{ this.props.price }</p>
           { isAuth ? cartIcon : null }
         </div>

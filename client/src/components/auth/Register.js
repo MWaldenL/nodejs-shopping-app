@@ -55,10 +55,10 @@ export class Register extends Component {
   render() {
     return (
       <div className="container">
-        <header>
-          <a href="/">Back</a>
-        </header>
-        <div className="card">
+        <nav className="navbar">
+          <a href="/"><i class="fas fa-arrow-left"></i></a>
+        </nav>
+        <div className="itemCard">
             <h1>Register</h1>
             <form className="form-group" onSubmit={ this.onSubmit }> 
                 <label htmlFor="name">Name</label>

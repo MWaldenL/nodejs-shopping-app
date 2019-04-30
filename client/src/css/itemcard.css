@@ -9,7 +9,7 @@ i {
 
 .itemCard {
     background-color: #fafafa;
-    border: 1px solid #eeeeee;
+    /* border: 1px solid #eeeeee; */
     border-radius: 5px;
     cursor: pointer;
     width: 300px;
@@ -18,11 +18,8 @@ i {
     justify-self: center
 }
 
-.itemCard :hover {
-    background: white
-}
-
 .bottomCard {
+    background-color: #fff;
     display: flex;
     flex-direction: column;
     justify-self: center;
@@ -42,7 +39,6 @@ i {
     display: inline;
     font-size: 12pt;
     color: #ffffff;
-    /* margin: 2em; */
     padding: 0.5rem 2rem;
     align-items: center;
     text-decoration: none;

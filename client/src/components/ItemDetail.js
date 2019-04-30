@@ -30,7 +30,7 @@ class ItemDetail extends Component {
                     <button className="btn">Add to Cart</button>
                 </div>
                 <div className="right-side">
-                    <img src={ itemImage } className="detail-image" />
+                    <img src={ itemImage } className="detail-image" alt="chan" />
                 </div>
             </div>
         )

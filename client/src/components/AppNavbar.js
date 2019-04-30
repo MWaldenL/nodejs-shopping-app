@@ -17,9 +17,10 @@ class AppNavbar extends Component {
           <a href="/cart" className="nav-links">Cart</a>
         </li>
         <li>
-          <a href="/#" className="nav-links" onClick={ this.logout }>
-              Logout
-          </a>
+          <a href="/watashi" className="nav-links">Me</a>
+        </li>
+        <li>
+          <a href="/" className="nav-links" onClick={ this.logout }>Logout</a>
         </li>
       </Fragment>
     )
@@ -39,14 +40,12 @@ class AppNavbar extends Component {
     )
 
     return (
-      <div>
-        <nav className="navbar">
-          <a href="/" className="logo">shopping</a>
-          <ul className="main-nav" id="js-menu">
-            { isAuth ? authLinks : guestLinks }
-          </ul>
-        </nav>
-      </div>
+      <nav className="navbar">
+        <a href="/" className="logo">shopping</a>
+        <ul className="main-nav" id="js-menu">
+          { isAuth ? authLinks : guestLinks }
+        </ul>
+      </nav>
     );
   }
 }

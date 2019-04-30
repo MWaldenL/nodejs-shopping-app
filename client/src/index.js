@@ -4,9 +4,9 @@ import { Route, BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 import App from './App';
-import AppNavbar from './components/AppNavbar';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
+import Profile from './components/auth/Profile';
 import Cart from './components/Cart';
 import ItemDetail from './components/ItemDetail';
 import './index.css';
@@ -18,9 +18,8 @@ const routing = (
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/cart" component={Cart} />
-        <Route path="/details/:id" component={ItemDetail} />
-        {/* <Route exact path="/:id" component={ItemDetail} /> */}
-        {/* <Route exact path="/:id" render={(props) => <ItemDetail {...props} />} /> */}
+        <Route exact path="/watashi" component={Profile} />
+        <Route exact path="/details/:id" component={ItemDetail} />
     </Router>
   </Provider>
 )

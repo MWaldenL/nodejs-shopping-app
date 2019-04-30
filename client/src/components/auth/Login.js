@@ -17,10 +17,6 @@ class Login extends Component {
     error: PropTypes.object.isRequired,
   };
 
-  componentDidMount() {
-
-  }
-
   componentDidUpdate(prevProps) {
     const { error } = this.props;
     if (error !== prevProps.error) {
@@ -44,14 +40,20 @@ class Login extends Component {
     const user = { email, password }
 
     this.props.login(user)
+    this.props.history.push({
+      pathname: '/',
+      state: {
+        id: this.props.id
+      }
+    })
   }
 
   render() {
     return (
       <div className="container">
-        <header>
-          <a href="/">Back</a>
-        </header>
+        <nav className="navbar">
+          <a href="/"><i className="fas fa-arrow-left"></i></a>
+        </nav>
         <div className="card">
             <h1>Login</h1>
             <form className="form-group" onSubmit={ this.onSubmit }> 
@@ -63,7 +65,6 @@ class Login extends Component {
               <input type="password" name="password" id="password" placeholder="Password" 
                 onChange={ this.onChange }/>
               
-              {/* <Button /> */}
               <input type="submit" className="btn" value="Login"  />
             </form>
         </div>
@@ -78,9 +79,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, { login })(Login);
-
-
-// const Button = withRouter(({ history }) => (
-//   <input type="submit" className="btn" value="Login" 
-//     onClick={ () => history.push('/') } />
-// ))

@@ -21,6 +21,9 @@ class Cart extends Component {
 
     return ( 
       <div className="main-container"> 
+        <nav className="navbar">
+          <a href="/"><i className="fas fa-arrow-left"></i></a>
+        </nav>
         { itemList }
       </div>
     );

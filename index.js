@@ -10,7 +10,7 @@ const categories = require('./routes/categories');
 const app = express();
 const url = 'mongodb://localhost/shopping-app'
 
-mongoose.connect(url, { useNewUrlParser: true })
+mongoose.connect(url, { useNewUrlParser: true, useCreateIndex: true })
     .then(() => console.log('Connected to MongoDB!'))
     .catch(err => console.log('Could not connect to MongoDB.'));
 
