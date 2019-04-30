@@ -15,12 +15,13 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/:id', async (req, res) => {
-    const item = await Item.findById(req.body.id)
+    const item = await Item.findById(req.params.id)
 
     if (!item) {
         return res.status(404).send('Item not found.')
     }
 
+    console.log(item)
     res.json(item);
 })
 
@@ -38,7 +39,7 @@ router.get('/category/:id', async (req, res) => {
 })
 
 // Buyer: Show products by seller
-router.get('/seller/:id', auth, async (req, res) => {
+router.get('/seller/:id', async (req, res) => {
     const item = await Item
         .find({ 'seller._id': req.params.id })
         .sort('name');

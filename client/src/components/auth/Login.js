@@ -6,7 +6,6 @@ import '../../css/register.css'
 
 
 class Login extends Component {
-
   state = {
     email: '',
     password: '',
@@ -18,6 +17,10 @@ class Login extends Component {
     error: PropTypes.object.isRequired,
   };
 
+  componentDidMount() {
+
+  }
+
   componentDidUpdate(prevProps) {
     const { error } = this.props;
     if (error !== prevProps.error) {
@@ -28,8 +31,6 @@ class Login extends Component {
         this.setState({ msg: null });
       }
     }
-
-
   }
 
   onChange = e => {
@@ -37,7 +38,7 @@ class Login extends Component {
   }
 
   onSubmit = e => {
-    e.preventDefault()
+    e.preventDefault();
 
     const { email, password } = this.state
     const user = { email, password }
@@ -46,11 +47,6 @@ class Login extends Component {
   }
 
   render() {
-    // const Button = withRouter(({ history }) => (
-    //   <input type="submit" className="btn" value="Login" 
-    //     onClick={ () => history.push('/') } />
-    // ))
-
     return (
       <div className="container">
         <header>
@@ -68,7 +64,7 @@ class Login extends Component {
                 onChange={ this.onChange }/>
               
               {/* <Button /> */}
-              <input type="submit" className="btn" value="Login" href="/" onClick={ this.redirect } />
+              <input type="submit" className="btn" value="Login"  />
             </form>
         </div>
       </div>
@@ -82,3 +78,9 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, { login })(Login);
+
+
+// const Button = withRouter(({ history }) => (
+//   <input type="submit" className="btn" value="Login" 
+//     onClick={ () => history.push('/') } />
+// ))

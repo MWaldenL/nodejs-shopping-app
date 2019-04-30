@@ -26,9 +26,9 @@ export const getItemById = id => dispatch => {
           payload: res.data
         }))
     .catch(err => {
-      console.log(id)
-      dispatch(returnErrors(err.response.data, err.response.status))
-    }
+        console.log(id)
+        dispatch(returnErrors(err.response.data, err.response.status))
+      }
     )
 };
 

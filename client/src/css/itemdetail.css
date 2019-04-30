@@ -1,4 +1,26 @@
 .detail-container {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    height: calc(100vh - 10em);
+    grid-template-columns: 1fr 1fr; 
+    grid-gap: 3em;
+}
+
+.detail-image { 
+    /* margin: 0 auto; */
+    justify-self: center;
+}
+
+.left-side {
+    margin: 6em 6em 10em 6em;
+    justify-self: center;
+    align-self: center
+}
+
+.left-side > * {
+    margin-bottom: 1em;
+}
+
+.right-side {
+    justify-self: center;
+    align-self: center;
 }

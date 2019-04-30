@@ -21,6 +21,7 @@ class MainPage extends Component {
 
     return (
       <div className="main-container"> 
+        {/* { this.props.isAuth ? itemList : null } */}
         { itemList }
       </div>
     )

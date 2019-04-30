@@ -4,6 +4,7 @@ import store from './store';
 import { loadUser } from './actions/authActions';
 import AppNavbar from './components/AppNavbar';
 import MainPage from './components/MainPage';
+import ItemDetail from './components/ItemDetail';
 import './App.css';
 
 
