@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getItemById } from '../../actions/itemActions'
+import { addToCart } from '../../actions/cartActions'
+import { loadUser } from '../../actions/authActions'
 import itemImage from '../../assets/mitsuha.jpg'
 import '../../css/itemdetail.css'
 
@@ -14,31 +16,52 @@ class ItemDetail extends Component {
     }
 
     componentDidMount() {
+        this.props.loadUser();
         this.props.getItemById(this.props.location.state.id)
     }
     
+    addToCart = () => {
+        const item = {
+            itemId: this.state.id
+        }
+        this.props.addToCart(item);
+    }
+    
+
     render() {
         const { item } = this.props.item;
-        console.log(item);
+        const { isAuth } = this.props.auth;
 
         return (    
-            <div className="detail-container">
-                <div className="left-side">
-                    <h1>{ item.name }</h1>
-                    <p>{ item.description }</p>
-                    <h2>{ item.unitPrice }</h2>
-                    <button className="btn">Add to Cart</button>
+                <div className="detail-container">
+                    <div className="left-side">
+                        <nav className="navbar detail-nav">
+                            <a href="/"><i className="fas fa-chevron-left"></i></a>
+                        </nav>
+                        <div className="detail-text">
+                            <h1>{ item.name }</h1>
+                            <p>{ item.description }</p>
+                            <h2>{ item.unitPrice }</h2>
+                            { 
+                                isAuth ? 
+                                <button className="btn" onClick={ this.addToCart }>Add to Cart</button> : 
+                                null 
+                            }
+                        </div>
+                    </div>
+                    <div className="right-side">
+                        <img src={ itemImage } className="detail-image" alt="chan" />
+                    </div>
                 </div>
-                <div className="right-side">
-                    <img src={ itemImage } className="detail-image" alt="chan" />
-                </div>
-            </div>
+
         )
     }
 }
 
 const mapStateToProps = state => ({
-    item: state.item
+    item: state.item,
+    cart: state.cart,
+    auth: state.auth
 })
 
-export default connect(mapStateToProps, { getItemById })(ItemDetail)
+export default connect(mapStateToProps, { getItemById, addToCart, loadUser })(ItemDetail)

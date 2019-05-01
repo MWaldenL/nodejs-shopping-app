@@ -31,7 +31,7 @@ class MainPage extends Component {
           <div className="item-container"> 
             { itemList }
           </div>
-          <h1>Shop by Seller</h1>
+          <h1>Shop by Manufacturer</h1>
           <div className="item-container mb-3"> 
             <SellerCard />
             <SellerCard />

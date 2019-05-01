@@ -47,6 +47,29 @@ const customItemSchema = new mongoose.Schema({
         required: true,
         default: 0
     },
+    seller: {
+        type: new mongoose.Schema({
+            name: {
+                type: String,
+                minlength: 10,
+                maxlength: 50,
+                required: true,
+            },
+            email: {
+                type: String,
+                trim: true,
+                match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 
+                    'Please fill a valid email address'],
+                required: 'Email address is required.'
+            },
+            number: {
+                type: String,
+                minlength: 7,
+                maxlength: 11, 
+                required: true
+            }
+        })
+    }
 })
 
 const userSchema = new mongoose.Schema({
@@ -78,7 +101,7 @@ const userSchema = new mongoose.Schema({
     },
     productList: {
         type: [ userProductSchema ],
-        validate: [ v => v.length < 20 ] // TODO: Check
+        validate: [ v => v.length < 20 ]
     },
     transactionList: {
         type: [ transactionSchema ],
@@ -86,7 +109,7 @@ const userSchema = new mongoose.Schema({
     },
     cart: {
         type: [ customItemSchema ],
-        validate: [ v => v.length <= 5 ] // TODO: Check
+        validate: [ v => v.length <= 5 ] // 
     },
     isSeller: {
         type: Boolean,

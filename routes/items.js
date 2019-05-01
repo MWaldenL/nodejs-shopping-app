@@ -63,7 +63,7 @@ router.get('/lowstock', auth, seller, async (req, res) => {
 })
 
 // Seller: Add new product
-router.post('/', auth, seller, async (req, res) => {
+router.post('/', auth, async (req, res) => {
     const { error } = validate(req.body);
     if (error)
         return res.status(400).send('Invalid request.');

@@ -35,8 +35,10 @@ router.post('/', async (req, res) => {
     // res.cookie('auth', token);
     jwt.sign({ id: user.id }, config.get('jwtPrivateKey'),
         (err, token) => {
-            if (err) 
+            if (err) {
                 throw err;
+                console.log('Hello World');
+            }
             res.json({
                 token,
                 user: {

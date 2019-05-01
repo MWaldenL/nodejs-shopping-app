@@ -18,7 +18,7 @@ router.get('/', auth, async (req, res) => {
 router.post('/', auth, async (req, res) => {
     const item = await Item
         .findById(req.body.itemId)
-        .select({'name': 1, 'imgUrl': 1});
+        .select({'name': 1, 'imgUrl': 1, 'seller': 1});
 
     const user = await User.findById(req.user.id);
     // const quantity = parseInt(req.body.quantity);
@@ -46,16 +46,16 @@ router.post('/', auth, async (req, res) => {
 })
 
 
-// TODO: Checkout single item - Issue
 router.post('/checkout', auth, async (req, res) => {
-    // Get item by id
     const user = await User.findById(req.user.id);
-    const item = user.cart.find(item => item.id === req.body.itemId);
-
-    console.log(user);
+    const item = await Item.findById(req.body.itemId);
 
     if (!item) {
         return res.status(404).send('Item not found.')
+    }
+
+    if (req.user.id === item.seller._id) {
+        return res.status(400).send("You can't buy your own products!");
     }
 
     const _seller = await User.findById(item.seller._id);
@@ -64,7 +64,7 @@ router.post('/checkout', auth, async (req, res) => {
     const transaction = new Transaction({
         date: Date.now(),
         items: [ item ],
-        buyer: req.user,
+        buyer: user,
         seller: _seller,
         totalAmount: item.unitPrice
     })
@@ -72,19 +72,24 @@ router.post('/checkout', auth, async (req, res) => {
     // Decrement item stock count 
     item.quantity -= 1;
 
+    // Remove item from user's cart
+    let itemIndex = user.cart.indexOf(item);
+    user.cart.splice(itemIndex, 1);
+
     // Save the transaction
     await transaction.save();
     await item.save();
+    await user.save();
 
     res.send(transaction);
 })
 
 
 // Delete from cart
-router.delete('/', auth, async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
     const user = await User.findById(req.user.id);
-    const targetItem = user.cart.find(item => item.id === req.body.itemId);
-
+    const targetItem = user.cart.find(item => item.id === req.params.id);
+    
     if (!targetItem)
         return res.status(404).send('Item not found.')
 
@@ -93,7 +98,7 @@ router.delete('/', auth, async (req, res) => {
     user.cart.splice(itemIndex, 1);
 
     user.save();
-    res.send(`${targetItem.name} successfully removed.`);
+    res.json(targetItem);
 })
 
 module.exports = router;

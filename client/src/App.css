@@ -1,10 +1,11 @@
 * {
     padding: 0;
     margin: 0;
+    font-family: "Karla"
 }
 
 body {
-    font-family: "Work Sans";
+    font-family: "Karla";
     min-height: calc(100vh - 1em);
 }
 
@@ -16,6 +17,10 @@ footer {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+
+.fa-chevron-left {
+    font-size: 20px;
 }
 
 footer > div {

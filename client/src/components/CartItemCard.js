@@ -5,12 +5,12 @@ import { removeFromCart } from '../actions/cartActions'
 
 
 class CartItemCard extends Component {
-    removeFromCart = () => {
-        let item = {
-            itemId: this.props.id
-        }
+    componentDidMount() {
+        this.props.loadUser();
+    }
 
-        this.props.removeFromCart(item);
+    removeFromCart = () => {
+        this.props.removeFromCart(this.props.id);
     }
 
     render() {

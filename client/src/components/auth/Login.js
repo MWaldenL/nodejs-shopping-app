@@ -20,7 +20,6 @@ class Login extends Component {
   componentDidUpdate(prevProps) {
     const { error } = this.props;
     if (error !== prevProps.error) {
-      // Check for login error
       if (error.id === 'LOGIN_FAIL') {
         this.setState({ msg: error.msg.msg });
       } else {
@@ -52,7 +51,7 @@ class Login extends Component {
     return (
       <div className="container">
         <nav className="navbar">
-          <a href="/"><i class="fas fa-angle-left"></i></a>
+          <a href="/"><i className="fas fa-chevron-left"></i></a>
         </nav>
         <div className="card">
             <h1>Login</h1>

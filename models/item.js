@@ -43,14 +43,17 @@ const itemSchema = new mongoose.Schema({
                 maxlength: 50,
                 required: true,
             },
+            email: {
+                type: String,
+                trim: true,
+                match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 
+                    'Please fill a valid email address'],
+                required: 'Email address is required.'
+            },
             number: {
                 type: String,
                 minlength: 7,
                 maxlength: 11, 
-                required: true
-            },
-            isSeller: {
-                type: Boolean,
                 required: true
             }
         })
