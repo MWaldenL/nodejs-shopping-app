@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { loadUser } from '../actions/authActions'
 import { getCart, removeFromCart } from '../actions/cartActions'
 import CartItemCard from './CartItemCard'
 import '../css/itemcard.css'
@@ -7,23 +8,21 @@ import '../css/itemcard.css'
 
 class Cart extends Component {
   componentDidMount() {
+    this.props.loadUser();
     this.props.getCart();
   }
 
   render() {
-    const cart = this.props.cart.items;
+    const { items } = this.props.cart;
       
     const itemList = ( 
-      cart.map( ({ id, name, imgUrl }) => (
-        <CartItemCard key={id} id={id} name={name} imgUrl={imgUrl} /> 
+      items.map( ({ _id, name, imgUrl }) => (
+        <CartItemCard key={_id} id={_id} name={name} imgUrl={imgUrl} /> 
       ))
     )
 
     return ( 
       <div className="main-container"> 
-        <nav className="navbar">
-          <a href="/"><i className="fas fa-arrow-left"></i></a>
-        </nav>
         { itemList }
       </div>
     );
@@ -31,7 +30,8 @@ class Cart extends Component {
 }
 
 const mapStateToProps = state => ({
-  cart: state.cart
+  cart: state.cart,
+  auth: state.auth
 })
 
-export default connect(mapStateToProps, { getCart, removeFromCart })(Cart);
+export default connect(mapStateToProps, { getCart, removeFromCart, loadUser })(Cart);

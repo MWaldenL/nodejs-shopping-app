@@ -1,5 +1,6 @@
 .navbar {
-    font-size: 18px;
+    font-size: 15px;
+    font-family: 'Work Sans';
     padding-bottom: 10px;
 }
 
@@ -25,7 +26,8 @@
 
 .logo {
     display: inline-block;
-    font-size: 22px;
+    font-size: 30px;
+    font-weight: 900;
     margin-top: 10px;
     margin-left: 20px;
 }
@@ -40,13 +42,23 @@
 }
 
 .active {
-    display: block;
+    display: flex;
+    margin: 10px;
+    border-radius: 5px;
+    flex-direction: column;
+    padding: 1em;
+    /* background-color: #fafafa */
+}
+
+.hr-grey {
+    border-color: #ededed;
+    margin: 20px 50px 20px 50px;
 }
 
 @media screen and (min-width: 768px) {
     .navbar {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         padding: 2em;
         height: 70px;
         align-items: center;
@@ -75,4 +87,11 @@
         display: none;
     }
 
+    .cat-nav {
+        justify-self: flex-start;
+    }
+
+    .auth-nav {
+        justify-self: flex-end
+    }
 }

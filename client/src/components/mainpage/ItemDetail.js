@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { getItemById } from '../actions/itemActions'
-import itemImage from '../assets/mitsuha.jpg'
-import '../css/itemdetail.css'
+import { getItemById } from '../../actions/itemActions'
+import itemImage from '../../assets/mitsuha.jpg'
+import '../../css/itemdetail.css'
 
 
 class ItemDetail extends Component {

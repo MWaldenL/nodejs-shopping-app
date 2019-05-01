@@ -52,7 +52,7 @@ class Login extends Component {
     return (
       <div className="container">
         <nav className="navbar">
-          <a href="/"><i className="fas fa-arrow-left"></i></a>
+          <a href="/"><i class="fas fa-angle-left"></i></a>
         </nav>
         <div className="card">
             <h1>Login</h1>

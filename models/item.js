@@ -19,7 +19,7 @@ const itemSchema = new mongoose.Schema({
     description: {
         type: String,
         minlength: 5,
-        maxlength: 50,
+        maxlength: 5000,
     },
     quantity: {
         type: Number,
@@ -32,7 +32,8 @@ const itemSchema = new mongoose.Schema({
         default: 0.00
     },
     imgUrl: { 
-        type: String
+        type: String,
+        default: ''
     },
     seller: {
         type: new mongoose.Schema({
@@ -62,7 +63,8 @@ function validateItem(item) {
     const schema = {
         name: Joi.string().min(5).max(255).required(),
         categoryId: Joi.string().min(5).max(255).required(),
-        description: Joi.string().min(5).max(255),
+        description: Joi.string().min(5).max(5000),
+        imgUrl: Joi.string().min(3),
         quantity: Joi.number().min(0).required(),
         unitPrice: Joi.number().min(0).required(),
     }

@@ -18,7 +18,7 @@ const userProductSchema = new mongoose.Schema({
     description: {
         type: String,
         minlength: 5,
-        maxlength: 255,
+        maxlength: 5000,
     },
     quantity: {
         type: Number,

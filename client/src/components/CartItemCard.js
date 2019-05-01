@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { loadUser } from '../actions/authActions'
 import { removeFromCart } from '../actions/cartActions'
 
 
@@ -18,9 +19,8 @@ class CartItemCard extends Component {
                 <img src={ require(`../assets/${ this.props.imgUrl }`) } alt="anime" className="item-image" />
                 <div className="bottomCard">
                     <h4 className="ellipsis">{ this.props.name }</h4>
-                    <button className="btn" 
-                            onClick={ this.removeFromCart }>
-                            Remove from Cart
+                    <button className="btn" onClick={ this.removeFromCart }>
+                        Remove from Cart
                     </button>
                 </div>
             </div>
@@ -29,7 +29,8 @@ class CartItemCard extends Component {
 }
 
 const mapStateToProps = state => ({
-    cart: state.cart
+    cart: state.cart,
+    auth: state.auth
 })
 
-export default connect(mapStateToProps, { removeFromCart })(CartItemCard);
+export default connect(mapStateToProps, { removeFromCart, loadUser })(CartItemCard);

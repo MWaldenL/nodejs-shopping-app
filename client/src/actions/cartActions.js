@@ -31,10 +31,15 @@ export const getCart = () => (dispatch, getState) => {
 }
 
 export const removeFromCart = (itemId) => (dispatch, getState) => {
-  axios.delete('/api/cart', itemId, tokenConfig(getState))
-    .then(res => dispatch({ type: REMOVE_FROM_CART }))
+  // axios.delete('/api/cart', itemId, tokenConfig(getState))
+  axios.delete('/api/cart', itemId)
+    .then(res => dispatch({ 
+      type: REMOVE_FROM_CART,
+      payload: itemId
+     }))
     .catch(err => {
       console.log(itemId)
+      console.log(tokenConfig(getState))
       dispatch(returnErrors(err.response.data, err.response.status))
     })
 }

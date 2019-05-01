@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { addToCart } from '../actions/cartActions'
-import '../css/itemcard.css';
+import { addToCart } from '../../actions/cartActions'
+import '../../css/itemcard.css';
 
 
 class ItemCard extends Component {
@@ -32,7 +32,7 @@ class ItemCard extends Component {
       
     return (
       <div className="itemCard" onClick={ this.onCardClick }>
-        <img src={ require(`../assets/${ this.props.imgUrl }`) } alt="anime" className="item-image" />
+        <img src={ require(`../../assets/${ this.props.imgUrl }`) } alt="anime" className="item-image" />
         <div className="bottomCard">
           <h3 className="ellipsis">{ this.props.name }</h3>
           <p>{ this.props.price }</p>

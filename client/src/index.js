@@ -8,7 +8,7 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Profile from './components/auth/Profile';
 import Cart from './components/Cart';
-import ItemDetail from './components/ItemDetail';
+import ItemDetail from './components/mainpage/ItemDetail';
 import './index.css';
 
 const routing = (

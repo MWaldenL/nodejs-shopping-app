@@ -1,9 +1,19 @@
-.main-container {
+.banner {
+    width: 1380px;
+    height: 280px;
+    background-image: url('../assets/banner.jpg'); 
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.item-container {
+    font-family: 'Karla';
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.main-container > * {
+.item-container > * {
     margin: 1em;
 }

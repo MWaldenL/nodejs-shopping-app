@@ -81,6 +81,7 @@ router.post('/', auth, seller, async (req, res) => {
         description: req.body.description,
         quantity: req.body.quantity,
         unitPrice: req.body.unitPrice,
+        imgUrl: req.body.imgUrl,
         seller: _seller
     })
 

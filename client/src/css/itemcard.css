@@ -9,7 +9,7 @@ i {
 
 .itemCard {
     background-color: #fafafa;
-    /* border: 1px solid #eeeeee; */
+    border: 1px solid #eeeeee;
     border-radius: 5px;
     cursor: pointer;
     width: 300px;

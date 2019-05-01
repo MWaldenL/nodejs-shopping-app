@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { loadUser } from '../../actions/authActions'
+import { addItem } from '../../actions/itemActions'
 
 
 class Profile extends Component {
     componentDidMount() {
-        console.log('async componentDidMount() called')
         this.props.loadUser()
+    }
+
+    onAddItem = () => {
+        
     }
 
     render() {
@@ -17,15 +21,18 @@ class Profile extends Component {
         
         return (
             <div>
-                <h1>{ user.number }</h1>
+                <h1>{ user.name }</h1>
+                <h2>My Products</h2>
                 <p>{ productList }</p>
+                <button className="btn" onClick={ this.onAddItem }>Add New Item</button>
             </div>
         )
     }
 }
 
 const mapStateToProps = state => ({
-    auth: state.auth
+    auth: state.auth,
+    item: state.item
 })
 
-export default connect(mapStateToProps, { loadUser })(Profile)
+export default connect(mapStateToProps, { loadUser, addItem })(Profile)

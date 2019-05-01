@@ -10,11 +10,12 @@ export const loadUser = () => (dispatch, getState) => {
     dispatch({ type: USER_LOADING })
 
     axios.get('/api/users/me', tokenConfig(getState))
-        .then(res => 
+        .then(res => {
             dispatch({
                 type: USER_LOADED,
                 payload: res.data
-            }))
+            })
+        })
         .catch(err => {
             dispatch(returnErrors(err.response.data, err.response.status));
             dispatch({
