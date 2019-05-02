@@ -10,16 +10,19 @@ class CartItemCard extends Component {
     }
 
     removeFromCart = () => {
+        let cartItem = document.getElementById('cartItem');
+        cartItem.parentNode.removeChild(cartItem);     
+
         this.props.removeFromCart(this.props.id);
     }
 
     render() {
         return (
-            <div className="itemCard">
+            <div className="itemCard" id="cartItem">
                 <img src={ require(`../assets/${ this.props.imgUrl }`) } alt="anime" className="item-image" />
                 <div className="bottomCard">
                     <h4 className="ellipsis">{ this.props.name }</h4>
-                    <button className="btn" onClick={ this.removeFromCart }>
+                    <button className="btn" id="removeBtn" onClick={ this.removeFromCart }>
                         Remove from Cart
                     </button>
                 </div>

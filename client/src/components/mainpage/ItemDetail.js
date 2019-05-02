@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { getItemById } from '../../actions/itemActions'
 import { addToCart } from '../../actions/cartActions'
 import { loadUser } from '../../actions/authActions'
@@ -27,6 +28,9 @@ class ItemDetail extends Component {
         this.props.addToCart(item);
     }
     
+    navigateBack = () => {
+        this.props.history.goBack()
+    }
 
     render() {
         const { item } = this.props.item;
@@ -36,7 +40,7 @@ class ItemDetail extends Component {
                 <div className="detail-container">
                     <div className="left-side">
                         <nav className="navbar detail-nav">
-                            <a href="/"><i className="fas fa-chevron-left"></i></a>
+                            <i className="fas fa-chevron-left" onClick={ this.navigateBack }></i>
                         </nav>
                         <div className="detail-text">
                             <h1>{ item.name }</h1>
@@ -64,4 +68,6 @@ const mapStateToProps = state => ({
     auth: state.auth
 })
 
-export default connect(mapStateToProps, { getItemById, addToCart, loadUser })(ItemDetail)
+export default withRouter(
+    connect(mapStateToProps, { getItemById, addToCart, loadUser })(ItemDetail)
+)

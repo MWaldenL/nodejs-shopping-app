@@ -10,13 +10,11 @@ class AppNavbar extends Component {
 
   toggleNav = () => {
     let mainNav = document.getElementById('menu-nav');
-    let login = document.getElementById('login');
     let navBarToggle = document.getElementById('js-navbar-toggle');
-    let navHori = document.getElementById('nav-hr');
 
-    navBarToggle.addEventListener('click', function(){
+    // navBarToggle.addEventListener('click', function(){
       mainNav.classList.toggle('active');
-    })
+    // })
   }
 
   render() {
@@ -74,7 +72,6 @@ class AppNavbar extends Component {
         <ul className="main-nav cat-nav" id="menu-nav">
           { guestLinks }
           { isAuth ? userLinks : null }
-          {/* <hr className="hr-grey" id="nav-hr"></hr> */}
           { isAuth ? null : authLinks }
         </ul>
       </nav>

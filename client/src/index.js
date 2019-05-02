@@ -13,7 +13,7 @@ import './index.css';
 
 const routing = (
   <Provider store={store}>
-    <Router>  
+    <Router>   
         <Route exact path="/" component={App} />
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
